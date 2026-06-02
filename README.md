@@ -33,7 +33,7 @@ Progress will land in the same notebook (or a dedicated Part 2 notebook if the f
 
 | File | Description |
 |------|-------------|
-| `2026-04-29_makemore_bigram.ipynb` | Main notebook (Part 1 complete; Part 2 TBD) |
+| `bigram_part1.ipynb` | Main notebook (Part 1 complete; Part 2 TBD) |
 | `names.txt` | Training names ([Karpathy `makemore`](https://github.com/karpathy/makemore) dataset) |
 | `requirements.txt` | Python dependencies |
 | `.github/workflows/notebook.yml` | CI: executes the notebook on push/PR |
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open `2026-04-29_makemore_bigram.ipynb` and run all cells from the project root so `names.txt` resolves correctly.
+Open `bigram_part1.ipynb` and run all cells from the project root so `names.txt` resolves correctly.
 
 ## Requirements
 

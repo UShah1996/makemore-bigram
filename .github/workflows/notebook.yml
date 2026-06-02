@@ -32,5 +32,5 @@ jobs:
             --to notebook \
             --execute \
             --ExecutePreprocessor.timeout=600 \
-            2026-04-29_makemore_bigram.ipynb \
+            bigram_part1.ipynb \
             --output executed.ipynb
