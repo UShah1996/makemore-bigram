@@ -1,6 +1,8 @@
 # Publish this repo to GitHub
 
-Everything is committed locally on branch `main`. Run these steps once in your terminal.
+**Published:** [github.com/UShah1996/makemore-bigram](https://github.com/UShah1996/makemore-bigram)
+
+The steps below are kept for reference if you clone this layout for another project.
 
 ## 1. Log in to GitHub (one time)
 
