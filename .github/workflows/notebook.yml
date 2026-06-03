@@ -24,13 +24,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt nbconvert
 
-      - name: Execute notebook
+      - name: Execute notebooks
         env:
           MPLBACKEND: Agg
         run: |
-          jupyter nbconvert \
-            --to notebook \
-            --execute \
-            --ExecutePreprocessor.timeout=600 \
-            bigram_part1.ipynb \
-            --output executed.ipynb
+          for nb in bigram_part1.ipynb bigram_part2.ipynb; do
+            jupyter nbconvert \
+              --to notebook \
+              --execute \
+              --ExecutePreprocessor.timeout=900 \
+              "$nb" \
+              --output "executed_${nb}"
+          done

@@ -16,24 +16,24 @@ Learning project following [Andrej Karpathy's *makemore* series](https://www.you
 - Compute **log-likelihood** and average **negative log-likelihood** (cross-entropy) on the training set
 - Build `(xs, ys)` integer tensors for the neural-network bigram model
 
-## Part 2 — neural network bigram (planned)
+## Part 2 — neural network bigram — done
 
-Same dataset and bigram framing, but the transition table is learned with a small network instead of raw counts.
+Same dataset; learn transitions with a `27×27` weight matrix `W` (no bias), one-hot inputs, softmax via `exp` (lecture style), NLL loss + L2 regularization.
 
-- [ ] One-hot encode previous character `xs` (27-dim vectors)
-- [ ] Linear layer `27 → 27` (no bias, matching the lecture setup)
-- [ ] Softmax + **negative log-likelihood** loss on `ys`
-- [ ] SGD training loop; track loss vs. the count-based `P` matrix
-- [ ] Sample names from the trained weights
-- [ ] Compare average NLL to the smoothed count model from Part 1
+- [x] One-hot encode `xs`, forward pass `xenc @ W`
+- [x] NLL loss and manual gradient descent
+- [x] Full-dataset training loop (100 steps)
+- [x] Compare avg NLL to smoothed count matrix `P` from Part 1
+- [x] Sample names from trained `W`
 
-Progress will land in the same notebook (or a dedicated Part 2 notebook if the file grows too large).
+See `bigram_part2.ipynb`.
 
 ## Project layout
 
 | File | Description |
 |------|-------------|
-| `bigram_part1.ipynb` | Main notebook (Part 1 complete; Part 2 TBD) |
+| `bigram_part1.ipynb` | Count-matrix bigram model (Part 1) |
+| `bigram_part2.ipynb` | Neural net bigram model (Part 2) |
 | `names.txt` | Training names ([Karpathy `makemore`](https://github.com/karpathy/makemore) dataset) |
 | `requirements.txt` | Python dependencies |
 | `.github/workflows/notebook.yml` | CI: executes the notebook on push/PR |
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open `bigram_part1.ipynb` and run all cells from the project root so `names.txt` resolves correctly.
+Open `bigram_part1.ipynb` then `bigram_part2.ipynb` from the project root so `names.txt` resolves correctly.
 
 ## Requirements
 
@@ -61,7 +61,7 @@ Open `bigram_part1.ipynb` and run all cells from the project root so `names.txt`
 
 ## CI
 
-On every push to `main` (and on pull requests), GitHub Actions runs the notebook end-to-end with a headless matplotlib backend. See the [Actions tab](https://github.com/UShah1996/makemore-bigram/actions).
+On every push to `main` (and on pull requests), GitHub Actions runs both notebooks end-to-end with a headless matplotlib backend. See the [Actions tab](https://github.com/UShah1996/makemore-bigram/actions).
 
 ## Data attribution
 
