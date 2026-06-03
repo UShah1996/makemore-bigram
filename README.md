@@ -36,6 +36,7 @@ See `bigram_part2.ipynb`.
 | `bigram_part2.ipynb` | Neural net bigram model (Part 2) |
 | `names.txt` | Training names ([Karpathy `makemore`](https://github.com/karpathy/makemore) dataset) |
 | `requirements.txt` | Python dependencies |
+| `requirements-dev.txt` | Adds `nbstripout` for git output stripping |
 | `.github/workflows/notebook.yml` | CI: executes the notebook on push/PR |
 
 ## Setup
@@ -51,6 +52,23 @@ jupyter notebook
 ```
 
 Open `bigram_part1.ipynb` then `bigram_part2.ipynb` from the project root so `names.txt` resolves correctly.
+
+### Strip outputs before commit (recommended)
+
+Run All saves outputs locally (fine for learning). This repo keeps notebooks **without outputs** in git so diffs stay small and CI stays the source of truth.
+
+After cloning, install the git filter once:
+
+```bash
+pip install -r requirements-dev.txt
+nbstripout --install --attributes .gitattributes
+```
+
+Commits will then automatically strip `.ipynb` outputs. To clean files manually:
+
+```bash
+nbstripout bigram_part1.ipynb bigram_part2.ipynb
+```
 
 ## Requirements
 
